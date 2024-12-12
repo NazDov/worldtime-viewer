@@ -1,0 +1,17 @@
+<div
+  class="generic-container"
+>
+  <div
+
+    class="generic-box">
+    <ng-container *ngIf="header">
+      <h2 class="text-center mb-4">{{header}}</h2>
+      <br/>
+    </ng-container>
+
+    <ng-template
+      [ngTemplateOutlet]="basicContent.templateRef"
+    ></ng-template>
+
+  </div>
+</div>

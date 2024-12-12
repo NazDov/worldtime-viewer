@@ -1,0 +1,26 @@
+<app-base-modal
+  [modalTitle]="'Add new clock from the list'"
+  [isDisabled]="!selectedTimeZone"
+  (onCancel)="cancel()"
+  (onAddition)="add()">
+
+  <ng-template appBasicModalContent>
+
+    <div class="container">
+      <label class="form-label">TimeZone Names</label>
+      <select [(ngModel)]='selectedTimeZone'
+              class="form-select">
+        <option value="">Select time zone</option>
+        <option *ngFor="let tz of timeZoneNames" [value]="tz">
+          {{ tz }}
+        </option>
+      </select>
+
+      <p class="form-label mt-2" *ngIf="selectedTimeZone">
+        Selected: {{selectedTimeZone}}
+      </p>
+    </div>
+
+  </ng-template>
+
+</app-base-modal>

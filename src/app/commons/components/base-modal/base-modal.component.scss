@@ -1,0 +1,20 @@
+.modal-container {
+  padding: 1rem;
+}
+.title {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.content p {
+  line-height: 1.4;
+  font-size: 1.1rem;
+}
+.content .current {
+  //color: rgb(24, 71, 129);
+  font-weight: 700;
+}
+
+.content .row .col-1 {
+  flex: 0 0 auto !important;
+  width: 5px !important;
+}

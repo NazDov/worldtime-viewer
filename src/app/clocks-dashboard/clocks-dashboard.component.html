@@ -1,0 +1,45 @@
+<app-generic-container
+ [header]="'Clocks Dashboard'">
+
+  <ng-template appGenericContent>
+
+    <div class="container">
+      <h3>My Clocks / TimeZones</h3>
+      <button class="btn btn-primary" (click)="openModalAddNewClock(addClocksModal)">Add Clock</button>
+      <table class="table mt-3">
+        <thead>
+        <tr>
+          <th scope="col">Time zone name</th>
+          <th scope="col">TZ abbr & offset</th>
+          <th scope="col">Current local time 24h</th>
+          <th scope="col">Local Date (DD-MM-YYYY)</th>
+          <th scope="col">Daylight saving (from->to)</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="timeZoneModels.length > 0">
+        <!-- List of Sent Documents -->
+        <tr *ngFor="let tz of timeZoneModels">
+          <td>{{ tz.name }}</td>
+          <td>{{ tz.abbreviation + '(' + tz.offset + ')' }}</td>
+          <td>{{ tz.localDateTime | date: 'mediumTime' }}</td>
+          <td>{{ tz.localDateTime | date: 'dd-MM-yyyy'}}</td>
+          <td>
+            <span *ngIf="tz.dst"> {{tz.dst_from | date: 'dd-MM-yyyy'}} --> {{tz.dst_to | date: 'dd-MM-yyyy'}}
+            </span>
+            <span *ngIf="!tz.dst"> Not Active</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </ng-template>
+
+</app-generic-container>
+
+<ng-template #addClocksModal let-modal>
+  <app-clocks-add-modal
+  (onAddition)="onAddNewTimeZoneSelected($event)"
+  (onCancel)="onModalCancel()">
+  </app-clocks-add-modal>
+</ng-template>

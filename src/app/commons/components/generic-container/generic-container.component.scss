@@ -1,0 +1,28 @@
+.generic-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.075);
+
+  .generic-box {
+    width: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &-h-600 {
+      height: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #343a40; // Darker text
+    }
+  }
+}
+
+
+
