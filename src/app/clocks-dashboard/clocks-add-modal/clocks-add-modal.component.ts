@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {BaseModalComponent, BasicModalContentDirective} from "../../commons/components/base-modal/base-modal.component";
 import {WorldTimeApiService} from "../../commons/services/world-time-api.service";
@@ -19,7 +19,7 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './clocks-add-modal.component.html',
   styleUrl: './clocks-add-modal.component.scss'
 })
-export class ClocksAddModalComponent implements OnInit {
+export class ClocksAddModalComponent implements OnInit, OnDestroy{
 
   @Output() public onCancel = new EventEmitter<any>();
   @Output() public onAddition = new EventEmitter<string>();
@@ -64,5 +64,10 @@ export class ClocksAddModalComponent implements OnInit {
 
   cancel() {
     this.onCancel.emit(true);
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }
